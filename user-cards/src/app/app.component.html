@@ -1,0 +1,8 @@
+<main>
+  <app-toolbar
+    (selectEvent)="sort($event)"
+    (searchEvent)="search($event)"
+    (allSelectBtnClickEvent)="selectAll()"
+  ></app-toolbar>
+  <app-users-list [users]="users"></app-users-list>
+</main>

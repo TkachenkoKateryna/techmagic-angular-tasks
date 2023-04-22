@@ -1,0 +1,5 @@
+<mat-grid-list [cols]="breakpoint" gutterSize="0px" rowHeight="500px">
+  <mat-grid-tile *ngFor="let user of users"
+    ><app-user-card [user]="user"></app-user-card
+  ></mat-grid-tile>
+</mat-grid-list>

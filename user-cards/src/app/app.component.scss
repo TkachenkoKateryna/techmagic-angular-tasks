@@ -1,0 +1,12 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  margin: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex: 1;
+}
