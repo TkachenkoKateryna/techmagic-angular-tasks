@@ -1,8 +1,15 @@
 <main>
-  <app-toolbar
-    (selectEvent)="sort($event)"
+  <app-toolbar></app-toolbar>
+  <app-actions-toolbar
+    (sortEvent)="sort($event)"
     (searchEvent)="search($event)"
-    (allSelectBtnClickEvent)="selectAll()"
-  ></app-toolbar>
-  <app-users-list [users]="users"></app-users-list>
+    (deleteEvent)="onDelete()"
+    (allSelectEvent)="onAllSelect()"
+    [selectedUsersIds]="selectedUsersIds"
+  ></app-actions-toolbar>
+  <app-users-list
+    (selectEvent)="fillSelectedIds($event)"
+    [events]="eventsSubject.asObservable()"
+    [users]="users"
+  ></app-users-list>
 </main>

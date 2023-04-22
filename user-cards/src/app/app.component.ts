@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from './users/users.service';
+import { Subject } from 'rxjs';
+import { UsersService } from './users/services/users.service';
 
 @Component({
   selector: 'app-root',
@@ -8,20 +9,36 @@ import { UsersService } from './users/users.service';
 })
 export class AppComponent implements OnInit {
   users: User[];
-  selectedUsers: User[];
+  selectedUsersIds: number[] = [];
+
   constructor(private usersService: UsersService) {}
 
+  eventsSubject: Subject<void> = new Subject<void>();
+
   ngOnInit() {
-    this.users = this.usersService.getUsers('');
+    this.users = this.usersService.getInitialUsers();
   }
 
   sort(value: string) {
-    this.users = this.usersService.getUsers(value);
+    this.users = this.usersService.sortUsers(this.users, value);
   }
 
   search(value: string) {
-    this.users = this.usersService.searchOnUsers(value);
+    this.users = this.usersService.searchOnUsers(this.users, value);
   }
 
-  selectAll() {}
+  onDelete() {
+    this.users = this.usersService.deleteUsers(
+      this.users,
+      this.selectedUsersIds
+    );
+  }
+
+  onAllSelect() {
+    this.eventsSubject.next();
+  }
+
+  fillSelectedIds(ids: number[]) {
+    this.selectedUsersIds = ids;
+  }
 }

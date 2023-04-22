@@ -1,5 +1,10 @@
 <mat-card class="card">
-  <mat-checkbox color="white" class="card__checkbox large"></mat-checkbox>
+  <mat-checkbox
+    color="white"
+    class="card__checkbox large"
+    (change)="onCheck(user.id)"
+    [checked]="selectedUsersIds.includes(user.id)"
+  ></mat-checkbox>
   <div class="img-wrapper">
     <img
       mat-card-image
@@ -8,7 +13,7 @@
     />
   </div>
 
-  <mat-card-content>
+  <mat-card-content class="card__content">
     <p>
       Username : <span>{{ user.firstName + " " + user.lastName }}</span>
     </p>

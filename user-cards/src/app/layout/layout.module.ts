@@ -7,9 +7,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { ActionsToolbarComponent } from './actions-toolbar/actions-toolbar.component';
 
 @NgModule({
-  declarations: [ToolbarComponent],
+  declarations: [ToolbarComponent, ActionsToolbarComponent],
   imports: [
     CommonModule,
     MatToolbarModule,
@@ -17,6 +18,6 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     MatSelectModule,
     MatInputModule,
   ],
-  exports: [ToolbarComponent],
+  exports: [ActionsToolbarComponent, ToolbarComponent],
 })
 export class LayoutModule {}

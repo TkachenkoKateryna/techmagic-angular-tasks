@@ -1,0 +1,30 @@
+<mat-toolbar>
+  <div class="actions">
+    <button mat-button (click)="onAllSelect()">Select all</button>
+    <button
+      mat-button
+      color="warn"
+      (click)="onDelete()"
+      [disabled]="selectedUsersIds.length === 0"
+    >
+      Delete
+    </button>
+    <mat-form-field appearance="fill">
+      <mat-label>Sorting order</mat-label>
+      <mat-select
+        [(value)]="selectedSort"
+        (selectionChange)="onSelect(selectedSort)"
+      >
+        <mat-option *ngFor="let option of sortOptions" [value]="option.value">
+          {{ option.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="searchBar">
+    <mat-form-field appearance="fill" (change)="onSearchChange($event)">
+      <mat-label>Search</mat-label>
+      <input matInput />
+    </mat-form-field>
+  </div>
+</mat-toolbar>
