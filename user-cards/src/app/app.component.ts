@@ -10,10 +10,9 @@ import { UsersService } from './users/services/users.service';
 export class AppComponent implements OnInit {
   users: User[];
   selectedUsersIds: number[] = [];
+  eventsSubject: Subject<void> = new Subject<void>();
 
   constructor(private usersService: UsersService) {}
-
-  eventsSubject: Subject<void> = new Subject<void>();
 
   ngOnInit() {
     this.users = this.usersService.getInitialUsers();
@@ -34,7 +33,7 @@ export class AppComponent implements OnInit {
     );
   }
 
-  onAllSelect() {
+  onSelectAll() {
     this.eventsSubject.next();
   }
 

@@ -17,18 +17,19 @@ import { UsersService } from '../services/users.service';
 })
 export class UsersListComponent implements OnInit {
   private eventsSubscription: Subscription;
-  @Input() selectOption = '';
-  @Input() users: User[];
-  @Output() selectEvent = new EventEmitter<number[]>();
-  @Input() events: Observable<void>;
   selectedUsersIds: number[] = [];
   breakpoint: number = 4;
+
+  @Output() selectEvent = new EventEmitter<number[]>();
+  @Input() selectOption = '';
+  @Input() users: User[];
+  @Input() events: Observable<void>;
 
   constructor(private breakpointService: BreakpointService) {}
 
   ngOnInit() {
     this.breakpoint = this.breakpointService.setBreakpoint(window.innerWidth);
-    this.eventsSubscription = this.events.subscribe(() => this.allSelect());
+    this.eventsSubscription = this.events.subscribe(() => this.selectAll());
   }
 
   ngOnDestroy() {
@@ -51,7 +52,7 @@ export class UsersListComponent implements OnInit {
     this.selectEvent.emit(this.selectedUsersIds);
   }
 
-  allSelect() {
+  selectAll() {
     this.selectedUsersIds = this.users.map((user) => user.id);
     this.selectEvent.emit(this.selectedUsersIds);
   }

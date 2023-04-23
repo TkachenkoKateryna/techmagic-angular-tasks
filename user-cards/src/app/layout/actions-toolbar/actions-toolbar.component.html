@@ -1,6 +1,6 @@
 <mat-toolbar>
   <div class="actions">
-    <button mat-button (click)="onAllSelect()">Select all</button>
+    <button mat-button (click)="onSelectAll()">Select all</button>
     <button
       mat-button
       color="warn"
@@ -15,6 +15,7 @@
         [(value)]="selectedSort"
         (selectionChange)="onSelect(selectedSort)"
       >
+        <mat-option>None</mat-option>
         <mat-option *ngFor="let option of sortOptions" [value]="option.value">
           {{ option.label }}
         </mat-option>

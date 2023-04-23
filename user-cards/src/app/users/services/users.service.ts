@@ -1,40 +1,40 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 const mockedUsersList: User[] = [
   {
     id: 1,
     firstName: 'Leanne',
-    lastName: 'Bret',
-    email: 'Sincere@april.biz',
-    phone: '1-770-736-8031 x56442',
+    lastName: 'Luke',
+    email: 'Luke@april.biz',
+    phone: '1-744-732-8031 x32447',
   },
   {
     id: 2,
     firstName: 'Deanne',
     lastName: 'Bret',
-    email: 'Sincere@april.biz',
+    email: 'Bret@april.biz',
     phone: '1-770-736-8031 x56442',
   },
   {
     id: 3,
     firstName: 'Beanne',
-    lastName: 'Bret',
-    email: 'Sincere@april.biz',
-    phone: '1-770-736-8031 x56442',
+    lastName: 'Black',
+    email: 'Black@april.biz',
+    phone: '1-333-736-3456 x56442',
   },
   {
     id: 4,
     firstName: 'Seanne',
-    lastName: 'Bret',
-    email: 'Sincere@april.biz',
-    phone: '1-770-736-8031 x56442',
+    lastName: 'Alon',
+    email: 'Alon@april.biz',
+    phone: '1-332-323-3242 x56442',
   },
   {
     id: 5,
-    firstName: 'Seanne',
-    lastName: 'Bret',
-    email: 'Sincere@april.biz',
-    phone: '1-770-736-8031 x56442',
+    firstName: 'Kate',
+    lastName: 'Huhe',
+    email: 'Huhe@april.biz',
+    phone: '1-333-736-3323 x56442',
   },
 ];
 
@@ -42,26 +42,29 @@ const mockedUsersList: User[] = [
   providedIn: 'root',
 })
 export class UsersService {
-  storedUsers: User[];
+  private storedUsers: User[];
 
   constructor() {
     this.storedUsers = mockedUsersList;
   }
 
   getInitialUsers() {
-    return this.storedUsers;
+    return mockedUsersList;
   }
 
   sortUsers(users: User[], option: string) {
-    let returnedUsers = users.sort((a: User, b: User) =>
-      a.firstName.localeCompare(b.firstName)
-    );
+    if (option) {
+      let returnedUsers = users.sort((a: User, b: User) =>
+        a.firstName.localeCompare(b.firstName)
+      );
 
-    if (option === 'desc') {
-      returnedUsers = returnedUsers.reverse();
+      if (option === 'desc') {
+        returnedUsers = returnedUsers.reverse();
+      }
+      return returnedUsers;
     }
 
-    return returnedUsers;
+    return users.sort((a: User, b: User) => a.id - b.id);
   }
 
   searchOnUsers(users: User[], value: string) {
@@ -72,7 +75,6 @@ export class UsersService {
           user.lastName.toLowerCase().includes(value.toLowerCase())
       );
     }
-
     return this.storedUsers;
   }
 

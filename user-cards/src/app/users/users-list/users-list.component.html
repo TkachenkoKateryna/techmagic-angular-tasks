@@ -1,10 +1,10 @@
-<mat-grid-list [cols]="breakpoint" gutterSize="0px" rowHeight="500px">
+<mat-grid-list [cols]="breakpoint" gutterSize="0px" rowHeight="550px">
   <mat-grid-tile *ngFor="let user of users"
     ><app-user-card
       [user]="user"
       [selectedUsersIds]="selectedUsersIds"
       (onCheckEvent)="check($event)"
-      (allSelectEvent)="allSelect()"
+      (allSelectEvent)="selectAll()"
     ></app-user-card
   ></mat-grid-tile>
 </mat-grid-list>

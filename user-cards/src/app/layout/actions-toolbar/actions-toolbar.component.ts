@@ -26,7 +26,7 @@ export class ActionsToolbarComponent {
     this.searchEvent.emit((event.target as HTMLInputElement).value);
   }
 
-  onAllSelect() {
+  onSelectAll() {
     this.allSelectEvent.emit();
   }
 
