@@ -1,4 +1,4 @@
-<form class="ui form" [formGroup]="userForm">
+<form class="ui form" [formGroup]="userForm" (ngSubmit)="onSubmit()">
 	<app-input type="text" name="name" [control]="userForm.controls.name" />
 	<app-input
 		type="text"
@@ -7,12 +7,7 @@
 	/>
 	<app-input type="email" name="email" [control]="userForm.controls.email" />
 	<app-input type="text" name="phone" [control]="userForm.controls.phone" />
-	<button
-		class="ui button"
-		type="submit"
-		(click)="onSubmit()"
-		[disabled]="!userForm.valid"
-	>
+	<button class="ui button" type="submit" [disabled]="!userForm.valid">
 		Submit
 	</button>
 </form>

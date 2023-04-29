@@ -54,8 +54,13 @@ export class UsersEffects {
 		return this.actions$.pipe(
 			ofType(createUserAction),
 			exhaustMap((action) => {
-				return this.usersService.createUser(action.payload).pipe(
-					map((data) => createUserSuccessAction({ payload: data })),
+				const user = { ...action.payload, id: Math.random() };
+				return this.usersService.createUser(user).pipe(
+					map(() => {
+						return createUserSuccessAction({
+							payload: user,
+						});
+					}),
 					catchError(() =>
 						of(createUserErrorAction({ message: 'Oops, something went wrong' }))
 					)
