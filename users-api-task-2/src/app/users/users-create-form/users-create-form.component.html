@@ -1,0 +1,11 @@
+<form class="ui form" [formGroup]="userForm">
+  <app-input type="text" name="name" [control]="userForm.controls.name" />
+  <app-input
+    type="text"
+    name="username"
+    [control]="userForm.controls.username"
+  />
+  <app-input type="email" name="email" [control]="userForm.controls.email" />
+  <app-input type="text" name="phone" [control]="userForm.controls.phone" />
+  <button class="ui button" type="submit" (click)="onSubmit()">Submit</button>
+</form>

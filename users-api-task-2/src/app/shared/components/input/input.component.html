@@ -1,0 +1,40 @@
+<div class="field" [ngClass]="{ error: showErrors() }">
+	<label [for]="name">{{ name | titlecase }}</label>
+	<div class="control">
+		<input
+			[id]="name"
+			[name]="name"
+			[placeholder]="placeholder"
+			[type]="type"
+			[formControl]="control"
+		/>
+		<ng-container *ngIf="showErrors()">
+			<div
+				class="ui error visible message"
+				*ngIf="control.errors?.['required']"
+			>
+				Valid is required
+			</div>
+			<div
+				class="ui error visible message"
+				*ngIf="control.errors?.['minlength']"
+			>
+				Value you entered {{control.errors?.["minlength"]["actualLength"]}}, but
+				should be at least {{control.errors?.["minlength"]["requiredLength"]}}
+			</div>
+			<div
+				class="ui error visible message"
+				*ngIf="control.errors?.['maxlength']"
+			>
+				Value you entered {{control.errors?.["maxlength"]["actualLength"]}}, but
+				should be less than {{control.errors?.["maxlength"]["requiredLength"]}}
+			</div>
+			<div class="ui error visible message" *ngIf="control.errors?.['pattern']">
+				Invalid input
+			</div>
+			<div class="ui error visible message" *ngIf="control.errors?.['email']">
+				Invalid email
+			</div>
+		</ng-container>
+	</div>
+</div>

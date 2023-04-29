@@ -1,0 +1,28 @@
+<app-loader *ngIf="isLoading$ | async"></app-loader>
+
+<table class="ui celled table" *ngIf="!(isLoading$ | async)">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Name</th>
+			<th scope="col">Username</th>
+			<th scope="col">Email</th>
+			<th scope="col">Phone</th>
+			<th scope="col">Actions</th>
+		</tr>
+	</thead>
+	<tbody *ngIf="users$ !== undefined">
+		<tr *ngFor="let user of users$ | async; let i = index">
+			<th scope="row">{{ i + 1 }}</th>
+			<td>{{ user.name }}</td>
+			<td>{{ user.username }}</td>
+			<td>{{ user.email }}</td>
+			<td>{{ user.phone }}</td>
+			<td>
+				<button class="ui red button" (click)="onUserDelete(user.id)">
+					Delete
+				</button>
+			</td>
+		</tr>
+	</tbody>
+</table>

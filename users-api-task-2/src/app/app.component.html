@@ -1,0 +1,6 @@
+<button class="ui primary button" (click)="onClick()">Add user</button>
+<app-modal *ngIf="isModalOpen$ | async" (close)="onClick()">
+	<div modalTitle>Add new user</div>
+	<app-users-create-form></app-users-create-form>
+</app-modal>
+<app-users-table></app-users-table>
