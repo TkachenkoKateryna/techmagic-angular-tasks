@@ -13,24 +13,26 @@
 				class="ui error visible message"
 				*ngIf="control.errors?.['required']"
 			>
-				Valid is required
+				{{ name | titlecase }} is required
 			</div>
 			<div
 				class="ui error visible message"
 				*ngIf="control.errors?.['minlength']"
 			>
-				Value you entered {{control.errors?.["minlength"]["actualLength"]}}, but
-				should be at least {{control.errors?.["minlength"]["requiredLength"]}}
+				{{ name | titlecase }} length
+				{{control.errors?.["minlength"]["actualLength"]}}, but should be at
+				least {{control.errors?.["minlength"]["requiredLength"]}}
 			</div>
 			<div
 				class="ui error visible message"
 				*ngIf="control.errors?.['maxlength']"
 			>
-				Value you entered {{control.errors?.["maxlength"]["actualLength"]}}, but
-				should be less than {{control.errors?.["maxlength"]["requiredLength"]}}
+				{{ name | titlecase }} length
+				{{control.errors?.["maxlength"]["actualLength"]}}, but should be less
+				than {{control.errors?.["maxlength"]["requiredLength"]}}
 			</div>
 			<div class="ui error visible message" *ngIf="control.errors?.['pattern']">
-				Invalid input
+				Invalid {{ name }}
 			</div>
 			<div class="ui error visible message" *ngIf="control.errors?.['email']">
 				Invalid email

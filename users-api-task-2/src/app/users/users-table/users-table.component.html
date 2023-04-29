@@ -1,6 +1,9 @@
 <app-loader *ngIf="isLoading$ | async"></app-loader>
 
-<table class="ui celled table" *ngIf="!(isLoading$ | async)">
+<table
+	class="ui celled table"
+	*ngIf="!(isLoading$ | async) && (users$ | async)?.length"
+>
 	<thead>
 		<tr>
 			<th scope="col">#</th>

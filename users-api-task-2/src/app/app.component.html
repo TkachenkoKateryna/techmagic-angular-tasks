@@ -1,4 +1,13 @@
-<button class="ui primary button" (click)="onClick()">Add user</button>
+<div class="ui message error" *ngIf="errorMessage$ | async as error">
+	{{ error }}
+</div>
+<button
+	class="ui primary button"
+	(click)="onClick()"
+	*ngIf="!(errorMessage$ | async)"
+>
+	Add user
+</button>
 <app-modal *ngIf="isModalOpen$ | async" (close)="onClick()">
 	<div modalTitle>Add new user</div>
 	<app-users-create-form></app-users-create-form>

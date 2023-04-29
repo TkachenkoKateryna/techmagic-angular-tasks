@@ -1,12 +1,16 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { UsersState } from './users.state';
 
-const getCounterState = createFeatureSelector<UsersState>('users');
+const getUsersState = createFeatureSelector<UsersState>('users');
 
-export const getUsers = createSelector(getCounterState, (state) => {
-  return state.users;
-});
+export const getUsers = createSelector(getUsersState, (state) => state.users);
 
-export const usersLoading = createSelector(getCounterState, (state) => {
-  return state.loading;
-});
+export const usersLoading = createSelector(
+	getUsersState,
+	(state) => state.loading
+);
+
+export const getUserError = createSelector(
+	getUsersState,
+	(state) => state.error
+);

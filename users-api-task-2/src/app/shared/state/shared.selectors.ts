@@ -3,6 +3,7 @@ import { SharedState } from './shared.state';
 
 const getSharedState = createFeatureSelector<SharedState>('shared');
 
-export const getModalStatus = createSelector(getSharedState, (state) => {
-  return state.isModalOpen;
-});
+export const getModalStatus = createSelector(
+	getSharedState,
+	(state) => state.isModalOpen
+);
