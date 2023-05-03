@@ -1,0 +1,18 @@
+<app-loader *ngIf="isLoading$ | async"></app-loader>
+
+<mat-grid-list
+  [cols]="breakpoint"
+  gutterSize="0px"
+  rowHeight="550px"
+  *ngIf="!(isLoading$ | async)"
+>
+  <mat-grid-tile
+    *ngFor="
+      let user of users$
+        | async
+        | searchUsers : searchTerm
+        | sortUsers : sortOption
+    "
+    ><app-user-card [user]="user"></app-user-card
+  ></mat-grid-tile>
+</mat-grid-list>

@@ -1,0 +1,13 @@
+<main>
+  <app-error></app-error>
+  <app-toolbar></app-toolbar>
+  <app-actions-toolbar
+    (sortEvent)="sort($event)"
+    (searchEvent)="search($event)"
+  ></app-actions-toolbar>
+  <app-users-list
+    *ngIf="!(errorMessage$ | async)"
+    [sortOption]="sortOption"
+    [searchTerm]="searchTerm"
+  ></app-users-list>
+</main>

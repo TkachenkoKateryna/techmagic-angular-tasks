@@ -1,0 +1,47 @@
+<h2 mat-dialog-title>Add new user</h2>
+<mat-dialog-content>
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <app-input
+      type="text"
+      name="firstName"
+      label="First name"
+      [control]="userForm.controls.firstName"
+    />
+    <app-input
+      type="text"
+      name="lastName"
+      label="Last name"
+      [control]="userForm.controls.lastName"
+    />
+    <app-input
+      type="email"
+      name="email"
+      [control]="userForm.controls.email"
+      label="Email"
+    />
+    <app-input
+      type="text"
+      name="phone"
+      [control]="userForm.controls.phone"
+      label="Phone"
+    />
+    <mat-dialog-actions>
+      <button
+        mat-button
+        type="button"
+        class="mat-raised-button"
+        (click)="close()"
+      >
+        Close
+      </button>
+      <button
+        mat-button
+        class="mat-raised-button mat-primary"
+        type="submit"
+        [disabled]="!userForm.valid"
+      >
+        Submit
+      </button>
+    </mat-dialog-actions>
+  </form>
+</mat-dialog-content>

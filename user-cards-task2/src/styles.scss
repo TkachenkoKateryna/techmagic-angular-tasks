@@ -1,0 +1,49 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "/node_modules/normalize-scss/sass/normalize/import-now";
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  position: relative;
+}
+
+.mat-mdc-checkbox {
+  // .mat-mdc-checkbox .mdc-checkbox
+  &.large {
+    & .mdc-checkbox {
+      flex-basis: auto;
+      width: 30px;
+      height: 30px;
+
+      &__background {
+        width: 30px;
+        height: 30px;
+        border-radius: 4px;
+      }
+
+      & .mdc-checkbox__native-control {
+        width: 52px;
+        height: 52px;
+
+        &:enabled:not(:checked):not(:indeterminate):not(
+            [data-indeterminate="true"]
+          )
+          ~ .mdc-checkbox__background {
+          background-color: rgb(248 248 248 / 80%);
+        }
+      }
+
+      &:hover {
+        & .mdc-checkbox__native-control {
+          &:enabled:not(:checked):not(:indeterminate):not(
+              [data-indeterminate="true"]
+            )
+            ~ .mdc-checkbox__background {
+            background-color: rgb(1 135 134 / 60%);
+          }
+        }
+      }
+    }
+  }
+}
